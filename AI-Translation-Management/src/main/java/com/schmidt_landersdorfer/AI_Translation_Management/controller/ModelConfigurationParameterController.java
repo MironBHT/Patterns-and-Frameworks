@@ -19,28 +19,28 @@ public class ModelConfigurationParameterController {
         this.parameterService = parameterService;
     }
 
-    // Get all configuration parameters
+
     @GetMapping
     public ResponseEntity<List<ModelConfigurationParameter>> getAllParameters() {
         List<ModelConfigurationParameter> parameters = parameterService.getAllParameters();
         return ResponseEntity.ok(parameters);
     }
 
-    // Get a single configuration parameter by ID
+
     @GetMapping("/{id}")
     public ResponseEntity<ModelConfigurationParameter> getParameterById(@PathVariable Long id) {
         ModelConfigurationParameter parameter = parameterService.getParameterById(id);
         return ResponseEntity.ok(parameter);
     }
 
-    // Create a new configuration parameter
+
     @PostMapping
     public ResponseEntity<ModelConfigurationParameter> createParameter(@RequestBody ModelConfigurationParameter parameter) {
         ModelConfigurationParameter createdParameter = parameterService.createParameter(parameter);
         return ResponseEntity.ok(createdParameter);
     }
 
-    // Update an existing configuration parameter
+
     @PutMapping("/{id}")
     public ResponseEntity<ModelConfigurationParameter> updateParameter(
             @PathVariable Long id,
@@ -49,7 +49,7 @@ public class ModelConfigurationParameterController {
         return ResponseEntity.ok(updatedParameter);
     }
 
-    // Delete a configuration parameter
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteParameter(@PathVariable Long id) {
         parameterService.deleteParameter(id);

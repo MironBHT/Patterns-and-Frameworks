@@ -19,35 +19,30 @@ public class TextDataService {
         this.textDataRepository = textDataRepository;
     }
 
-    // Create a new TextData entry
     public TextData createTextData(TextData textData) {
-        return textDataRepository.save(textData);  // Saves the TextData entity to the database
+        return textDataRepository.save(textData);
     }
 
-    // Retrieve all TextData entries
     public List<TextData> getAllTextData() {
-        return textDataRepository.findAll();  // Retrieves all TextData entries
+        return textDataRepository.findAll();
     }
 
-    // Retrieve a TextData entry by ID
     public TextData getTextDataById(Long id) {
         Optional<TextData> textData = textDataRepository.findById(id);
-        return textData.orElse(null);  // Returns the TextData if found, otherwise null
+        return textData.orElse(null);
     }
 
-    // Update a TextData entry
     public TextData updateTextData(Long id, TextData updatedTextData) {
         if (textDataRepository.existsById(id)) {
-            updatedTextData.setId(id);  // Ensures the ID is set for the update
-            return textDataRepository.save(updatedTextData);  // Updates the TextData entity in the database
+            updatedTextData.setId(id);
+            return textDataRepository.save(updatedTextData);
         }
-        return null;  // Return null if the TextData entry doesn't exist
+        return null;
     }
 
-    // Delete a TextData entry
     public void deleteTextData(Long id) {
         if (textDataRepository.existsById(id)) {
-            textDataRepository.deleteById(id);  // Deletes the TextData entry from the database
+            textDataRepository.deleteById(id);
         }
     }
 }

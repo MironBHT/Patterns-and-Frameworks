@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/data-providers")
@@ -21,21 +20,18 @@ public class ExternalTranslationServiceController {
         this.externalTranslationServiceService = externalTranslationServiceService;
     }
 
-    // GET: Retrieve all external translation services
     @GetMapping
     public ResponseEntity<List<ExternalTranslationService>> getAllExternalTranslationServices() {
         List<ExternalTranslationService> services = externalTranslationServiceService.getAllServices();
         return new ResponseEntity<>(services, HttpStatus.OK);
     }
 
-    // GET: Retrieve a single external translation service by ID
     @GetMapping("/{id}")
     public ResponseEntity<ExternalTranslationService> getExternalTranslationServiceById(@PathVariable Long id) {
         ExternalTranslationService service = externalTranslationServiceService.getServiceById(id);
         return new ResponseEntity<>(service, HttpStatus.OK);
     }
 
-    // POST: Add a new external translation service
     @PostMapping
     public ResponseEntity<ExternalTranslationService> createExternalTranslationService(
             @RequestBody ExternalTranslationService externalTranslationService) {
@@ -43,7 +39,6 @@ public class ExternalTranslationServiceController {
         return new ResponseEntity<>(createdService, HttpStatus.CREATED);
     }
 
-    // PUT: Update an existing external translation service
     @PutMapping("/{id}")
     public ResponseEntity<ExternalTranslationService> updateExternalTranslationService(
             @PathVariable Long id,
@@ -52,7 +47,6 @@ public class ExternalTranslationServiceController {
         return new ResponseEntity<>(updatedService, HttpStatus.OK);
     }
 
-    // DELETE: Remove an external translation service by ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteExternalTranslationService(@PathVariable Long id) {
         externalTranslationServiceService.deleteService(id);

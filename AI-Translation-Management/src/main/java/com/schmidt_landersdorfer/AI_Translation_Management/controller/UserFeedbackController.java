@@ -22,27 +22,23 @@ public class UserFeedbackController {
         this.userFeedbackService = userFeedbackService;
     }
 
-    // Create Feedback
     @PostMapping
     public ResponseEntity<UserFeedback> createFeedback(@RequestBody UserFeedback userFeedback) {
         UserFeedback createdFeedback = userFeedbackService.createUserFeedback(userFeedback);
         return new ResponseEntity<>(createdFeedback, HttpStatus.CREATED);
     }
 
-    // Get All Feedback
     @GetMapping
     public List<UserFeedback> getAllFeedback() {
         return userFeedbackService.getAllUserFeedback();
     }
 
-    // Get Feedback by ID
     @GetMapping("/{id}")
     public ResponseEntity<UserFeedback> getFeedbackById(@PathVariable Long id) {
         Optional<UserFeedback> feedback = userFeedbackService.getUserFeedbackById(id);
         return feedback.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Update Feedback
     @PutMapping("/{id}")
     public ResponseEntity<UserFeedback> updateFeedback(
             @PathVariable Long id, @RequestBody UserFeedback updatedFeedback) {
@@ -50,7 +46,6 @@ public class UserFeedbackController {
         return feedback != null ? ResponseEntity.ok(feedback) : ResponseEntity.notFound().build();
     }
 
-    // Delete Feedback
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteFeedback(@PathVariable Long id) {
         return userFeedbackService.deleteUserFeedback(id)

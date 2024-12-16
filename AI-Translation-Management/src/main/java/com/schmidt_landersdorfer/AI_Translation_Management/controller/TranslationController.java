@@ -14,18 +14,17 @@ import java.util.Optional;
 @RequestMapping("/api/translations")
 public class TranslationController {
 
-    // Autowired TranslationService to use business logic
     @Autowired
     private TranslationService translationService;
 
-    // Get all translations
+
     @GetMapping
     public ResponseEntity<List<Translation>> getAllTranslations() {
         List<Translation> translations = translationService.getAllTranslations();
         return new ResponseEntity<>(translations, HttpStatus.OK);
     }
 
-    // Get a single translation by ID
+
     @GetMapping("/{id}")
     public ResponseEntity<Translation> getTranslationById(@PathVariable Long id) {
         Optional<Translation> translation = translationService.getTranslationById(id);
@@ -36,14 +35,12 @@ public class TranslationController {
         }
     }
 
-    // Create a new translation
     @PostMapping
     public ResponseEntity<Translation> createTranslation(@RequestBody Translation translation) {
         Translation createdTranslation = translationService.createTranslation(translation);
         return new ResponseEntity<>(createdTranslation, HttpStatus.CREATED);
     }
 
-    // Update an existing translation
     @PutMapping("/{id}")
     public ResponseEntity<Translation> updateTranslation(@PathVariable Long id, @RequestBody Translation translation) {
         Optional<Translation> existingTranslation = translationService.getTranslationById(id);
@@ -56,7 +53,6 @@ public class TranslationController {
         }
     }
 
-    // Delete a translation
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTranslation(@PathVariable Long id) {
         Optional<Translation> translation = translationService.getTranslationById(id);

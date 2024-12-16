@@ -18,12 +18,10 @@ public class ModelConfigurationParameterService {
         this.parameterRepository = parameterRepository;
     }
 
-    // Get all configuration parameters
     public List<ModelConfigurationParameter> getAllParameters() {
         return parameterRepository.findAll();
     }
 
-    // Get a single configuration parameter by ID
     public ModelConfigurationParameter getParameterById(Long id) {
         Optional<ModelConfigurationParameter> parameter = parameterRepository.findById(id);
         if (parameter.isEmpty()) {
@@ -32,12 +30,10 @@ public class ModelConfigurationParameterService {
         return parameter.get();
     }
 
-    // Create a new configuration parameter
     public ModelConfigurationParameter createParameter(ModelConfigurationParameter parameter) {
         return parameterRepository.save(parameter);
     }
 
-    // Update an existing configuration parameter
     public ModelConfigurationParameter updateParameter(Long id, ModelConfigurationParameter updatedParameter) {
         ModelConfigurationParameter existingParameter = getParameterById(id);
 
@@ -48,7 +44,6 @@ public class ModelConfigurationParameterService {
         return parameterRepository.save(existingParameter);
     }
 
-    // Delete a configuration parameter
     public void deleteParameter(Long id) {
         if (!parameterRepository.existsById(id)) {
             throw new IllegalArgumentException("Parameter with ID " + id + " not found.");

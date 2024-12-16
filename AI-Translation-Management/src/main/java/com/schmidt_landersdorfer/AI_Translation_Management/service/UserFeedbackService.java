@@ -18,22 +18,18 @@ public class UserFeedbackService {
         this.userFeedbackRepository = userFeedbackRepository;
     }
 
-    // Create UserFeedback
     public UserFeedback createUserFeedback(UserFeedback userFeedback) {
         return userFeedbackRepository.save(userFeedback);
     }
 
-    // Get all UserFeedback
     public List<UserFeedback> getAllUserFeedback() {
         return userFeedbackRepository.findAll();
     }
 
-    // Get UserFeedback by ID
     public Optional<UserFeedback> getUserFeedbackById(Long id) {
         return userFeedbackRepository.findById(id);
     }
 
-    // Update UserFeedback
     public UserFeedback updateUserFeedback(Long id, UserFeedback updatedFeedback) {
         if (userFeedbackRepository.existsById(id)) {
             updatedFeedback.setId(id);
@@ -42,7 +38,6 @@ public class UserFeedbackService {
         return null;
     }
 
-    // Delete UserFeedback
     public boolean deleteUserFeedback(Long id) {
         if (userFeedbackRepository.existsById(id)) {
             userFeedbackRepository.deleteById(id);

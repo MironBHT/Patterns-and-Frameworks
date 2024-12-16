@@ -20,28 +20,26 @@ public class ModelPerformanceController {
         this.modelPerformanceService = modelPerformanceService;
     }
 
-    // GET all ModelPerformances
+
     @GetMapping
     public ResponseEntity<List<ModelPerformance>> getAllModelPerformances() {
         List<ModelPerformance> performances = modelPerformanceService.getAllModelPerformances();
         return ResponseEntity.ok(performances);
     }
 
-    // GET ModelPerformance by ID
+
     @GetMapping("/{id}")
     public ResponseEntity<Optional<ModelPerformance>> getModelPerformanceById(@PathVariable Long id) {
         Optional<ModelPerformance> performance = modelPerformanceService.getModelPerformanceById(id);
         return ResponseEntity.ok(performance);
     }
 
-    // POST: Create new ModelPerformance
     @PostMapping
     public ResponseEntity<ModelPerformance> createModelPerformance(@RequestBody ModelPerformance modelPerformance) {
         ModelPerformance createdPerformance = modelPerformanceService.createModelPerformance(modelPerformance);
         return ResponseEntity.ok(createdPerformance);
     }
 
-    // PUT: Update existing ModelPerformance
     @PutMapping("/{id}")
     public ResponseEntity<ModelPerformance> updateModelPerformance(
             @PathVariable Long id,
@@ -50,7 +48,7 @@ public class ModelPerformanceController {
         return ResponseEntity.ok(updatedPerformance);
     }
 
-    // DELETE: Delete ModelPerformance by ID
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteModelPerformance(@PathVariable Long id) {
         modelPerformanceService.deleteModelPerformance(id);
