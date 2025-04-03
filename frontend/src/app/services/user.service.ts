@@ -19,7 +19,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
-      return this.http.get<User[]>(this.userUrl + '/getAllUsers')
+      return this.http.get<User[]>(this.userUrl)
       .pipe(
           tap(_ => this.log('fetched users')),
           catchError(this.handleError<User[]>('getUsers', []))
@@ -27,7 +27,7 @@ export class UserService {
   }
 
   getUser(id: number): Observable<User> {
-      const url = `${this.userUrl}/getUserById/${id}`;
+      const url = `${this.userUrl}/${id}`;
       return this.http.get<User>(url).pipe(
         tap(_ => this.log(`fetched user ID=${id}`)),
         catchError(this.handleError<User>(`getUser ID=${id}`))
@@ -35,8 +35,8 @@ export class UserService {
   }
 
   createUser(user: User) {
-    const url = `${this.userUrl}/createUser/${user}`;
-    return this.http.post<User>(url, user).pipe(
+    const url = `${this.userUrl}`;
+    return this.http.post(url, user).pipe(
       tap(_ => this.log(`created user ${user.userName}`)),
       catchError(this.handleError<User>(`createUser ${user.userName}`))
     );
