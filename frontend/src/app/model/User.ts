@@ -1,7 +1,7 @@
-export interface User {
-    id: number;
-    userName: string;
-    email: string;
-    role: string;   // should be Role according to data model, but not defined
-    registrationDate: Date;
+export class User {
+    id!: number;
+    userName!: string;
+    email!: string;
+    role!: string;   // (Role according to data model)
+    registrationDate!: Date;
   }
