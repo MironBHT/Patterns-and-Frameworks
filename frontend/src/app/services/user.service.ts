@@ -36,9 +36,10 @@ export class UserService {
 
   createUser(user: User): Observable<any> {
     const url = `${this.userUrl}`;
-    return this.http.post(url, user).pipe(
-      tap(_ => this.log(`created user ${user.userName}`)),
-      catchError(this.handleError<User>(`createUser ${user.userName}`))
+    // this.http.post(url, user, this.httpOptions);
+    return this.http.post(url, user, this.httpOptions).pipe(
+      tap(_ => this.log(`created user ${user.username}`)),
+      catchError(this.handleError<User>(`createUser ${user.username}`))
     );
   }
 
@@ -54,9 +55,7 @@ export class UserService {
   private handleError<T>(operation = 'operation', result?: T) {
       return (error: any): Observable<T> => {
           console.error(error); // log to console for the time being
-          // TODO: better job of transforming error for user consumption
           this.log(`${operation} failed: ${error.message}`);
-          // Let the app keep running by returning an empty result.
           return of(result as T);
       };
   }

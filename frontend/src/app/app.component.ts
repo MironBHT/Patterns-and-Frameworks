@@ -19,7 +19,12 @@ export class AppComponent {
   createTestUser(): void {
       this.user = new User();
       this.user.id = 10002;
-      this.user.userName = "Robert Mustermann";
+      this.user.username = 'Robert Mustermann';
+      this.user.email = 'robertm@mail.com';
+      this.user.role = 'User';
+      this.user.registrationDate = new Date();
+      this.user.feedbacks = [ 'Good' ];
+      this.user.translations = [ 'Hallo', 'Hello' ];
 
       this.userService.createUser(this.user);
   }

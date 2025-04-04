@@ -13,6 +13,11 @@ export class UserComponent {
   ngOnInit(): void {
     this.user = new User();
     this.user.id = 10001;
-    this.user.userName = "Hans Mustermann";
-  }
+    this.user.username = 'Hans Beispielname';
+    this.user.email = 'hans@mail.com';
+    this.user.role = 'User';
+    this.user.registrationDate = new Date();
+    this.user.feedbacks = [ 'Bad' ];
+    this.user.translations = [ 'Good Bye', 'Wiedersehen' ];
+}
 }
