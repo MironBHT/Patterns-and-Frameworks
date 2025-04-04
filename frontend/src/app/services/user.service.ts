@@ -34,7 +34,7 @@ export class UserService {
       );
   }
 
-  createUser(user: User) {
+  createUser(user: User): Observable<any> {
     const url = `${this.userUrl}`;
     return this.http.post(url, user).pipe(
       tap(_ => this.log(`created user ${user.userName}`)),
